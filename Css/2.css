@@ -28,7 +28,10 @@
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-  
+/* .ebere{
+  width:200px;
+  height:200px
+} */
 
 .bday-box:hover {
   transform: translateY(-10px) scale(1.02);
