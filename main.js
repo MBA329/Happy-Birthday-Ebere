@@ -1,5 +1,21 @@
 const $=s=>document.querySelector(s);
 
+// Browsers may block audio autoplay until the visitor interacts with the page.
+(function(){
+  const music=$('#backgroundMusic');
+  if(!music)return;
+  music.volume=.6;
+  const startMusic=()=>{
+    music.play().catch(()=>{});
+    removeEventListener('pointerdown',startMusic);
+    removeEventListener('keydown',startMusic);
+  };
+  music.play().catch(()=>{
+    addEventListener('pointerdown',startMusic,{once:true});
+    addEventListener('keydown',startMusic,{once:true});
+  });
+})();
+
 (function(){
   const el=$('#typewriter'),text='Happy Birthday',sleep=ms=>new Promise(r=>setTimeout(r,ms));
   (async function loop(){
