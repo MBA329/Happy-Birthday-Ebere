@@ -14,6 +14,16 @@ const $=s=>document.querySelector(s);
     addEventListener('pointerdown',startMusic,{once:true});
     addEventListener('keydown',startMusic,{once:true});
   });
+
+  // Pause the birthday music when the visitor leaves this tab,
+  // then resume it when they come back.
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){
+      music.pause();
+    }else{
+      music.play().catch(()=>{});
+    }
+  });
 })();
 
 (function(){
